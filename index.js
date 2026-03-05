@@ -24,22 +24,27 @@ function getUsers() {
     });
 }
 
-//POST API
 submit.addEventListener("click", () => {
-  const product = {
-    itemName: document.querySelector("#itemName").value,
-    unitPrice: document.querySelector("#price").value,
-    quantity: document.querySelector("#quantity").value,
-    supplier: document.querySelector("#supplier").value,
-  };
+  let iname = document.querySelector("#pname").value;
+  let uprice = document.querySelector("#p").value;
+  let quan = document.querySelector("#q").value;
+  let supplier = document.querySelector("#s").value;
+  let formData = { iname, uprice, quan, supplier };
+
   fetch("https://kudigu.onrender.com/api/show", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(product),
+    body: JSON.stringify(formData),
+    headers: {
+      "Content-Type": "application/json",
+    },
   }).catch((error) => {
     console.log(error);
   });
-  alert("Product added successfully");
+  alert("Product Added Successfully");
   location.reload();
+});
+
+window.addEventListener("load", () => {
+  getUsers();
 });
 

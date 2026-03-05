@@ -15,12 +15,7 @@ function getUsers() {
     .then((data) => {
       console.log(data);
       data.forEach((element) => {
-        html += `<tr>
-        <td>${element.itemName}</td>
-        <td>${element.unitPrice}</td>
-        <td>${element.quantity}</td>
-        <td>${element.supplier}</td>
-      </tr>`;
+        html += <li>${element.id} ${element.itemName} - ${element.unitPrice} - ${element.quantity} - ${element.supplier} </li>;
       });
       content.innerHTML = html;
     })

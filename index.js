@@ -32,7 +32,7 @@ submit.addEventListener("click", () => {
     quantity: document.querySelector("#quantity").value,
     supplier: document.querySelector("#supplier").value,
   };
-  fetch("https://gadgets-rc3z.onrender.com/api/products", {
+  fetch("https://kudigu.onrender.com/api/show", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(product),
@@ -42,3 +42,4 @@ submit.addEventListener("click", () => {
   alert("Product added successfully");
   location.reload();
 });
+

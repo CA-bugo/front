@@ -1,35 +1,13 @@
 const content = document.querySelector("#content");
 const submit = document.querySelector("#add");
-window.addEventListener("load", () => {
-  getUsers();
-});
 
-function getUsers() {
-  let html = "";
-  //FETCH API
-  fetch("https://kudigu.onrender.com/api/show", { mode: "cors" })
-    .then((response) => {
-      console.log(response);
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      data.forEach((element) => {
-        html += `<li>${element.id} ${element.itemName} - ${element.unitPrice} - ${element.quantity} - ${element.supplier} </li>`;
-      });
-      content.innerHTML = html;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
+//POST API
 submit.addEventListener("click", () => {
-  let iname = document.querySelector("#itemName").value;
-  let uprice = document.querySelector("#unitPrice").value;
-  let quan = document.querySelector("#quantity").value;
+  let itemName = document.querySelector("#itemName").value;
+  let unitPrice = document.querySelector("#unitPrice").value;
+  let quantity = document.querySelector("#quantity").value;
   let supplier = document.querySelector("#supplier").value;
-  let formData = { iname, uprice, quan, supplier };
+  let formData = { itemName, unitPrice, quantity, supplier };
 
   fetch("https://kudigu.onrender.com/api/show", {
     method: "POST",
@@ -49,3 +27,32 @@ window.addEventListener("load", () => {
 });
 
 
+function getUsers() {
+  let html = "";
+  //FETCH API
+  fetch("https://kudigu.onrender.com/api/show", { mode: "cors" })
+    .then((response) => {
+      console.log(response);
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      data.forEach((element) => {
+        html += 
+    <li> 
+        <span class="item-name">${element.itemName}</span>
+        <div class="item-meta">
+            <span class="item-price">₱${element.unitPrice}</span> • 
+            <span>Qty: ${element.quantity}</span>
+        </div>
+        <div class="item-meta" style="font-size: 0.75rem; opacity: 0.7;">
+            Supplier: ${element.supplier}
+        </div>
+    </li>;
+      });
+      content.innerHTML = html;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}

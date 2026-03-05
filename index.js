@@ -38,7 +38,7 @@ function getUsers() {
     .then((data) => {
       console.log(data);
       data.forEach((element) => {
-        html += <li> ${element.itemName} ${element.unitPrice} ${element.quantity} ${element.supplier}</li>;
+        html += `<li> ${element.itemName} ${element.unitPrice} ${element.quantity} ${element.supplier}</li>`;
       });
       content.innerHTML = html;
     })
@@ -46,3 +46,4 @@ function getUsers() {
       console.log(error);
     });
 }
+

@@ -3,11 +3,11 @@ const submit = document.querySelector("#add");
 
 //POST API
 submit.addEventListener("click", () => {
-  let itemName = document.querySelector("#itemName").value;
-  let unitPrice = document.querySelector("#unitPrice").value;
-  let quantity = document.querySelector("#quantity").value;
-  let supplier = document.querySelector("#supplier").value;
-  let formData = { itemName, unitPrice, quantity, supplier };
+  let iname = document.querySelector("#itemName").value;
+  let uprice = document.querySelector("#unitPrice").value;
+  let quan = document.querySelector("#quantity").value;
+  let sup = document.querySelector("#supplier").value;
+  let formData = { iname, uprice, quan, sup };
 
   fetch("https://kudigu.onrender.com/api/show", {
     method: "POST",
@@ -38,17 +38,7 @@ function getUsers() {
     .then((data) => {
       console.log(data);
       data.forEach((element) => {
-        html += 
-    <li> 
-        <span class="item-name">${element.itemName}</span>
-        <div class="item-meta">
-            <span class="item-price">₱${element.unitPrice}</span> • 
-            <span>Qty: ${element.quantity}</span>
-        </div>
-        <div class="item-meta" style="font-size: 0.75rem; opacity: 0.7;">
-            Supplier: ${element.supplier}
-        </div>
-    </li>;
+        html += <li> ${element.itemName} ${element.unitPrice} ${element.quantity} ${element.supplier}</li>;
       });
       content.innerHTML = html;
     })

@@ -15,7 +15,7 @@ function getUsers() {
     .then((data) => {
       console.log(data);
       data.forEach((element) => {
-        html += <li>{`${element.id} ${element.itemName} - ${element.unitPrice} - ${element.quantity} - ${element.supplier}`} </li>;
+        html += `<li>${element.id} ${element.itemName} - ${element.unitPrice} - ${element.quantity} - ${element.supplier} </li>`;
       });
       content.innerHTML = html;
     })
@@ -42,5 +42,6 @@ submit.addEventListener("click", () => {
   alert("Product added successfully");
   location.reload();
 });
+
 
 

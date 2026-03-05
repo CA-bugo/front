@@ -25,10 +25,10 @@ function getUsers() {
 }
 
 submit.addEventListener("click", () => {
-  let iname = document.querySelector("#pname").value;
-  let uprice = document.querySelector("#p").value;
-  let quan = document.querySelector("#q").value;
-  let supplier = document.querySelector("#s").value;
+  let iname = document.querySelector("#itemName").value;
+  let uprice = document.querySelector("#unitPrice").value;
+  let quan = document.querySelector("#quantity").value;
+  let supplier = document.querySelector("#supplier").value;
   let formData = { iname, uprice, quan, supplier };
 
   fetch("https://kudigu.onrender.com/api/show", {
@@ -47,4 +47,5 @@ submit.addEventListener("click", () => {
 window.addEventListener("load", () => {
   getUsers();
 });
+
 

@@ -9,21 +9,20 @@
     <h1>Add a Product</h1>
     <div id="container" style="display: flex">
       <div id="form" style="padding-right: 5rem; display: inline;"> 
-        <form>
+        <form id="productForm">
           <label>Item Name</label>
-          <input type="text" id="itemName" name="itemName" />
+          <input type="text" id="itemName" name="itemName" required />
           <label>Price</label>
-          <input type="text" id="unitPricer" name="unitPrice" />
+          <input type="number" id="unitPrice" name="unitPrice" step="0.01" required />
           <label>Quantity</label>
-          <input type="text" id="quantity" name="quantity"  />
+          <input type="number" id="quantity" name="quantity" required />
           <label>Supplier</label>
-          <input type="text" id="supplier" name="supplier"  />
-          <button type="submit" id = "add">Add Product</button>
+          <input type="text" id="supplier" name="supplier" required />
+          <button type="submit" id="add">Add Product</button>
         </form>
+      </div>
+      <ul id="content"></ul>
     </div>
-    <ul id="content"></ul>
     <script src="index.js"></script>
   </body>
 </html>
-
-

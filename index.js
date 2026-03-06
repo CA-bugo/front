@@ -3,21 +3,23 @@ const form = document.querySelector("#productForm");
 
 // POST API - handle form submission
 form.addEventListener("submit", (e) => {
-  e.preventDefault(); // Prevent default form submission
+  e.preventDefault();
   
-  let itemName = document.querySelector("#itemName").value;
-  let unitPrice = document.querySelector("#unitPrice").value;
+  // Match backend expected field names
+  let name = document.querySelector("#itemName").value;
+  let price = document.querySelector("#unitPrice").value;
   let quantity = document.querySelector("#quantity").value;
   let supplier = document.querySelector("#supplier").value;
   
-  let formData = { itemName, unitPrice, quantity, supplier };
+  // Backend expects: { name, price, quantity, supplier }
+  let formData = { name, price, quantity, supplier };
 
   fetch("https://kudigu.onrender.com/api/show", {
     method: "POST",
-    body: JSON.stringify(formData),
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify(formData),
   })
     .then((response) => {
       if (!response.ok) throw new Error('Network response was not ok');
@@ -25,8 +27,8 @@ form.addEventListener("submit", (e) => {
     })
     .then((data) => {
       alert("Product Added Successfully");
-      form.reset(); // Clear form instead of full page reload
-      getUsers(); // Refresh the list
+      form.reset();
+      getUsers(); // Refresh list
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -53,12 +55,13 @@ function getUsers() {
         return;
       }
       data.forEach((element) => {
+        // Match your database column names
         html += `<li>${element.itemName} - $${element.unitPrice} - Qty: ${element.quantity} - ${element.supplier}</li>`;
       });
       content.innerHTML = html;
     })
     .catch((error) => {
-      console.error("Error fetching users:", error);
+      console.error("Error fetching data:", error);
       content.innerHTML = "<li>Error loading products</li>";
     });
 }
